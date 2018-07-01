@@ -167,7 +167,7 @@ class Modmail(commands.Bot):
         warn = 'Esses comandos acimas podem ser alterados a qualquer momento.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='https://github.com/verixx/modmail')
+        em.add_field(name='Github', value='@AngelBotsDiscord')
         em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
@@ -176,7 +176,7 @@ class Modmail(commands.Bot):
     @commands.has_permissions(administrator=True)
     async def setup(self, ctx, *, modrole: discord.Role=None):
         '''Sets up a server for modmail'''
-        if discord.utils.get(ctx.guild.categories, name='Mod Mail'):
+        if discord.utils.get(ctx.guild.categories, name='Bate-papo'):
             return await ctx.send('Servisor configurado Modmail.')
 
         categ = await ctx.guild.create_category(
@@ -194,7 +194,7 @@ class Modmail(commands.Bot):
     @commands.has_permissions(administrator=True)
     async def disable(self, ctx):
         '''Close all threads and disable modmail.'''
-        categ = discord.utils.get(ctx.guild.categories, name='Mod Mail')
+        categ = discord.utils.get(ctx.guild.categories, name='Bate-papo')
         if not categ:
             return await ctx.send('This server is not set up.')
         for category, channels in ctx.guild.by_category():
@@ -218,7 +218,7 @@ class Modmail(commands.Bot):
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Conversa encerrada!')
-        em.description = f'**fechados!**'
+        em.description = f'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -339,7 +339,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('https://discordemoji.com/emoji/madblob')
+            await message.add_reaction('💣')
         except:
             pass
 
