@@ -127,7 +127,7 @@ class Modmail(commands.Bot):
         ---------------
         Client is ready!
         ---------------
-        Author: Kyb3r#7220
+        Author: Sysop#3831
         ---------------
         Logged in as: {self.user}
         User ID: {self.user.id}
@@ -151,21 +151,20 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Esse bot foi desenvolvido para o meu apartamento. ' \
+                         'Caso não saiba, eu sou apenas um Modmail.' \
+                         'Respondo você através de algumas horinhas.' 
                  
 
-        cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               f'`{prefix}reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               f'`{prefix}close` - Closes the current thread and deletes the channel.\n' \
-               f'`{prefix}disable` - Closes all threads and disables modmail for the server.\n' \
-               f'`{prefix}customstatus` - Sets the Bot status to whatever you want.' \
-               f'`{prefix}block` - Blocks a user from using modmail!' \
-               f'`{prefix}unblock` - Unblocks a user from using modmail!'
+        cmds = f'`{prefix}setup [modrole] <- (optional)` - Configurar o bot no servidor.\n' \
+               f'`{prefix}reply <message...>`- com este comando eu respondo usuários\n' \
+               f'`{prefix}close` - Com este comando eu fecho a DM com o usuário\n' \
+               f'`{prefix}disable` - Com este comando vou desativar esse Modmail no servidor\n' \
+               f'`{prefix}customstatus` - Quer alterar meu Jogando, faça a gora mesmo.' \
+               f'`{prefix}block` - Eu bloqueio qualquer usuário pelo Modmail' \
+               f'`{prefix}unblock` - Eu desbloqueio o usuário do Modmail.'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        warn = 'Esses comandos acimas podem ser alterados a qualquer momento.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
         em.add_field(name='Github', value='https://github.com/verixx/modmail')
@@ -178,7 +177,7 @@ class Modmail(commands.Bot):
     async def setup(self, ctx, *, modrole: discord.Role=None):
         '''Sets up a server for modmail'''
         if discord.utils.get(ctx.guild.categories, name='Mod Mail'):
-            return await ctx.send('This server is already set up.')
+            return await ctx.send('Servisor configurado Modmail.')
 
         categ = await ctx.guild.create_category(
             name='Mod Mail', 
@@ -189,7 +188,7 @@ class Modmail(commands.Bot):
         await c.edit(topic='Manually add user id\'s to block users.\n\n'
                            'Blocked\n-------\n\n')
         await c.send(embed=self.help_embed(ctx.prefix))
-        await ctx.send('Successfully set up server.')
+        await ctx.send('servidor configurado..')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
@@ -204,22 +203,22 @@ class Modmail(commands.Bot):
                     if 'User ID:' in str(chan.topic):
                         user_id = int(chan.topic.split(': ')[1])
                         user = self.get_user(user_id)
-                        await user.send(f'**{ctx.author}** has closed this modmail session.')
+                        await user.send(f'**{ctx.author}** Sua mensagem foi atendida, não volte a escrever novamente, pois encerramos o Modmail.')
                     await chan.delete()
         await categ.delete()
-        await ctx.send('Disabled modmail.')
+        await ctx.send('desabilitar Modmail.')
 
 
     @commands.command(name='close')
     @commands.has_permissions(manage_channels=True)
     async def _close(self, ctx):
-        '''Close the current thread.'''
+        '''Encerrei o Modmail.'''
         if 'User ID:' not in str(ctx.channel.topic):
             return await ctx.send('This is not a modmail thread.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Thread Closed')
-        em.description = f'**{ctx.author}** has closed this modmail session.'
+        em.description = f'**{ctx.author}** Fechado!'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -340,7 +339,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('👍🏻')
         except:
             pass
 
@@ -357,7 +356,7 @@ class Modmail(commands.Bot):
             return await message.author.send(embed=self.blocked_em)
 
         em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em.description = 'A Equipe de moderação responderá quando for possível.'
         em.color = discord.Color.green()
 
         if channel is not None:
@@ -414,9 +413,9 @@ class Modmail(commands.Bot):
 
         if id not in top_chan.topic:  
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully blocked!')
+            await ctx.send('Bloqueio efetuado com sucesso!')
         else:
-            await ctx.send('User is already blocked.')
+            await ctx.send('Usuário desbloqueado.')
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
@@ -435,9 +434,9 @@ class Modmail(commands.Bot):
 
         if id in top_chan.topic:
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully unblocked!')
+            await ctx.send('Usuário bloqueado com sucesso!')
         else:
-            await ctx.send('User is not already blocked.')
+            await ctx.send('Usuário desbloqueado.')
 
     @commands.command(hidden=True, name='eval')
     async def _eval(self, ctx, *, body: str):
