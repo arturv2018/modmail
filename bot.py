@@ -230,7 +230,7 @@ class Modmail(commands.Bot):
     async def ping(self, ctx):
         """Pong! Returns your websocket latency."""
         em = discord.Embed()
-        em.title ='Pong! Websocket Latency:'
+        em.title ='Karai, olha minha latência'
         em.description = f'{self.ws.latency * 1000:.4f} ms'
         em.color = 0x00FF00
         await ctx.send(embed=em)
@@ -339,7 +339,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('👍🏻')
+            await message.add_reaction('✅☑️')
         except:
             pass
 
@@ -355,7 +355,7 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
+        em = discord.Embed(title='Obrigado por sua Mensagem!')
         em.description = 'A Equipe de moderação responderá quando for possível.'
         em.color = discord.Color.green()
 
