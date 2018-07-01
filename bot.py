@@ -217,8 +217,8 @@ class Modmail(commands.Bot):
             return await ctx.send('This is not a modmail thread.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
-        em = discord.Embed(title='Thread Closed')
-        em.description = f'**{ctx.author}** Fechado!'
+        em = discord.Embed(title='Conversa encerrada!')
+        em.description = f'**{ctx.author}*https://cdn.discordapp.com/emojis/434060446878662667.gif?v=1 Fechado!* '
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
