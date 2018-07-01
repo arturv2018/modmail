@@ -337,7 +337,7 @@ class Modmail(commands.Bot):
         return em
 
     async def process_modmail(self, message):
-        '''Processes messages sent to the bot.'''
+        '''Enviando mensagem até o bot.'''
         try:
             await message.add_reaction('💣')
         except:
