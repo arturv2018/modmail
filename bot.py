@@ -214,11 +214,11 @@ class Modmail(commands.Bot):
     async def _close(self, ctx):
         '''Encerrei o Modmail.'''
         if 'User ID:' not in str(ctx.channel.topic):
-            return await ctx.send('This is not a modmail thread.')
+            return await ctx.send('Conversa encerrada.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Conversa encerrada!')
-        em.description = f'**{ctx.author}*https://cdn.discordapp.com/emojis/434060446878662667.gif?v=1 Fechado!* '
+        em.description = f'**fechados!**'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -339,7 +339,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅☑️')
+            await message.add_reaction('https://discordemoji.com/emoji/madblob')
         except:
             pass
 
