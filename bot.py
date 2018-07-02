@@ -127,7 +127,7 @@ class Modmail(commands.Bot):
         ---------------
         Client is ready!
         ---------------
-        Author: Kyb3r#7220
+        Author:Angelo#3413
         ---------------
         Logged in as: {self.user}
         User ID: {self.user.id}
@@ -151,9 +151,8 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = '.Esse bot foi desenvolvido por Angel. Sou Modmail, me configure abaixoEu tenho 98 anos de vida. '
+                         'Eu ainda estou online?.' 
                  
 
         cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
@@ -164,8 +163,7 @@ class Modmail(commands.Bot):
                f'`{prefix}block` - Blocks a user from using modmail!' \
                f'`{prefix}unblock` - Unblocks a user from using modmail!'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        warn = 'NOTA Eu não sou responsável pelos seus atos. Eu fui programado por Sysop#3831..'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
         em.add_field(name='Github', value='https://github.com/verixx/modmail')
@@ -340,7 +338,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('👍')
         except:
             pass
 
@@ -356,8 +354,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Obrigado pela mensagem!')
+        em.description = 'Assim que for possível responderei a você!'
         em.color = discord.Color.green()
 
         if channel is not None:
