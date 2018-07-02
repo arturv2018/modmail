@@ -61,11 +61,11 @@ class Modmail(commands.Bot):
         try:
             with open('config.json') as f:
                 config = json.load(f)
-                if config.get('TOKEN') == "your_token_here":
-                    if not os.environ.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI'):
+                if config.get('TOKEN') == "NDYzMTQzOTQ1ODM3MjE1NzY0.DhsInw.JbB7DsFvZxcrTUfLjPG5Bs1oU1s":
+                    if not os.environ.get('NNDYzMTQzOTQ1ODM3MjE1NzY0.DhsInw.JbB7DsFvZxcrTUfLjPG5Bs1oU1s'):
                         self.run_wizard()
                 else:
-                    token = config.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI).strip('\"')
+                    token = config.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsInw.JbB7DsFvZxcrTUfLjPG5Bs1oU1s').strip('\"')
         except FileNotFoundError:
             token = None
         return os.environ.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI') or token
