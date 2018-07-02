@@ -62,19 +62,19 @@ class Modmail(commands.Bot):
             with open('config.json') as f:
                 config = json.load(f)
                 if config.get('TOKEN') == "your_token_here":
-                    if not os.environ.get('TOKEN'):
+                    if not os.environ.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI'):
                         self.run_wizard()
                 else:
-                    token = config.get('TOKEN').strip('\"')
+                    token = config.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI).strip('\"')
         except FileNotFoundError:
             token = None
-        return os.environ.get('TOKEN') or token
+        return os.environ.get('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsH9w.-BwbZ5guN1FnaJx-jzks1bBM2OI') or token
     
     @staticmethod
     async def get_pre(bot, message):
         '''Returns the prefix.'''
         with open('config.json') as f:
-            prefix = json.load(f).get('PREFIX')
+            prefix = json.load(f).get('!')
         return os.environ.get('PREFIX') or prefix or 'm.'
 
     @staticmethod
