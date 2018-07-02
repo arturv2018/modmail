@@ -151,21 +151,21 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Esse bot foi desenvolvido por Angel. ' \
+                         'Sou Modmail, me configure abaixo' \
+                         'Eu tenho 98 anos de vida.' 
                  
 
-        cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               f'`{prefix}reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               f'`{prefix}close` - Closes the current thread and deletes the channel.\n' \
-               f'`{prefix}disable` - Closes all threads and disables modmail for the server.\n' \
-               f'`{prefix}customstatus` - Sets the Bot status to whatever you want.' \
-               f'`{prefix}block` - Blocks a user from using modmail!' \
-               f'`{prefix}unblock` - Unblocks a user from using modmail!'
+        cmds = f'`{prefix}setup [modrole] <- (optional)` -Me configure.\n' \
+               f'`{prefix}reply <message...>` -Deixa eu reponder alguém.\n' \
+               f'`{prefix}close` - Deixa eu parar de conversar.\n' \
+               f'`{prefix}disable` -Vamos desativar essa desgrassa\n' \
+               f'`{prefix}customstatus` -Vem mudar meu jogando.' \
+               f'`{prefix}block` - Bloquear usuário!' \
+               f'`{prefix}unblock` -Desbloquear usuário!'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        warn = 'NOTA Eu não sou responsável pelos seus atos. ' \
+               'Eu fui programado por Sysop#3831.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
         em.add_field(name='Github', value='https://github.com/verixx/modmail')
@@ -189,7 +189,7 @@ class Modmail(commands.Bot):
         await c.edit(topic='Manually add user id\'s to block users.\n\n'
                            'Blocked\n-------\n\n')
         await c.send(embed=self.help_embed(ctx.prefix))
-        await ctx.send('Successfully set up server.')
+        await ctx.send('Servidor configurado com sucesso.')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
@@ -340,7 +340,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('👍')
         except:
             pass
 
