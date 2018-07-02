@@ -151,9 +151,9 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Sou AngelBot. ' \
+                         'Estou online ' \
+                         'alô.' 
                  
 
         cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
@@ -340,7 +340,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('👍')
         except:
             pass
 
@@ -356,8 +356,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Obrigado!')
+        em.description = 'Sua mensagem foi enviada, por favor aguarde!'
         em.color = discord.Color.green()
 
         if channel is not None:
