@@ -75,13 +75,13 @@ class Modmail(commands.Bot):
         '''Returns the prefix.'''
         with open('config.json') as f:
             prefix = json.load(f).get('!')
-        return os.environ.get('PREFIX') or prefix or 'm.'
+        return os.environ.get('!') or prefix or '!.'
 
     @staticmethod
     def run_wizard():
         '''Wizard for first start'''
         print('------------------------------------------')
-        token = input('Enter your token:\n> ')
+        token = input('NDYzMTQzOTQ1ODM3MjE1NzY0.DhsInw.JbB7DsFvZxcrTUfLjPG5Bs1oU1s\n> ')
         print('------------------------------------------')
         data = {
                 "TOKEN" : token,
@@ -167,7 +167,7 @@ class Modmail(commands.Bot):
         warn = 'Esses comandos acimas podem ser alterados a qualquer momento.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='@AngelBotsDiscord')
+        em.add_field(name='Github', value='https://github.com/arturv2018/modmail')
         em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
@@ -203,7 +203,7 @@ class Modmail(commands.Bot):
                     if 'User ID:' in str(chan.topic):
                         user_id = int(chan.topic.split(': ')[1])
                         user = self.get_user(user_id)
-                        await user.send(f'**{ctx.author}** Sua mensagem foi atendida, não volte a escrever novamente, pois encerramos o Modmail.')
+                        await user.send(f'**{ctx.author}** has closed this modmail session')
                     await chan.delete()
         await categ.delete()
         await ctx.send('desabilitar Modmail.')
@@ -228,7 +228,7 @@ class Modmail(commands.Bot):
 
     @commands.command()
     async def ping(self, ctx):
-        """Pong! Returns your websocket latency."""
+        """Pong! Websocket Latency."""
         em = discord.Embed()
         em.title ='Karai, olha minha latência'
         em.description = f'{self.ws.latency * 1000:.4f} ms'
