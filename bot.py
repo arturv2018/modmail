@@ -151,24 +151,24 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Olá meu nome é Algel tenho 100 anos de idade. ' \
+                         'Moro na vila são cotolengo, lá eu como muito feijão ' \
+                         'Esse bot era da minha epoca, use com sabedoria.' 
                  
 
-        cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               f'`{prefix}reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               f'`{prefix}close` - Closes the current thread and deletes the channel.\n' \
-               f'`{prefix}disable` - Closes all threads and disables modmail for the server.\n' \
-               f'`{prefix}customstatus` - Sets the Bot status to whatever you want.' \
-               f'`{prefix}block` - Blocks a user from using modmail!' \
-               f'`{prefix}unblock` - Unblocks a user from using modmail!'
+        cmds = f'`{prefix}setup [modrole] <- (optional)` - Ativar Modmail no servidor.\n' \
+               f'`{prefix}reply <message...>` - Enviar mensagem ao usuário pelo modmail\'s recipient.\n' \
+               f'`{prefix}close` - Fechar conversa com o usuário pelo Modmail.\n' \
+               f'`{prefix}disable` - Desabilitar Modmail no servidor\n' \
+               f'`{prefix}customstatus` - altere meu jogando, eu sou velho gosto de jogar sinuca' \
+               f'`{prefix}block` - Bloqueando usuário pelo modmail!' \
+               f'`{prefix}unblock` - Desbloqueando o mesmo!'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        warn = 'Sou tão velho que nem consigo andar. ' \
+               'Deixa esse bot para staff até 130 anos.'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
-        em.add_field(name='Github', value='https://github.com/verixx/modmail')
+        em.add_field(name='Github', value='https://github.com/arturv2018/modmail')
         em.set_footer(text='Star the repository to unlock hidden features!')
 
         return em
@@ -340,7 +340,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('📂')
         except:
             pass
 
