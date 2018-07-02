@@ -127,7 +127,7 @@ class Modmail(commands.Bot):
         ---------------
         Client is ready!
         ---------------
-        Author: Sysop#3831
+        Author:Sysop#3831
         ---------------
         Logged in as: {self.user}
         User ID: {self.user.id}
@@ -215,7 +215,7 @@ class Modmail(commands.Bot):
         '''Encerrei o Modmail.'''
         if 'User ID:' not in str(ctx.channel.topic):
             return await ctx.send('Conversa encerrada.')
-        user_id = int(ctx.channel.topic.split(': ')[1])
+        user_id = int(ctx.channel.topic.split('Sua mensagem foi deletada')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Conversa encerrada!')
         em.description = f'
