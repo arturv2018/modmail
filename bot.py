@@ -127,7 +127,7 @@ class Modmail(commands.Bot):
         ---------------
         Client is ready!
         ---------------
-        Author: Kyb3r#7220
+        Author: -SuuNSeeT_#1264
         ---------------
         Logged in as: {self.user}
         User ID: {self.user.id}
@@ -151,21 +151,20 @@ class Modmail(commands.Bot):
     def help_embed(self, prefix):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation of a stateless "Mod Mail" bot. ' \
-                         'Made by Kyb3r and improved by the suggestions of others. This bot ' \
-                         'saves no data and utilises channel topics for storage and syncing.' 
+        em.description = 'Olá pessoal, estou vico. ' \
+                         'Fui formado através do gabriel, ele me ensinou ' \
+                         'Gosto muito de jogar Black Squad é comer Cachorro Quente.' 
                  
 
-        cmds = f'`{prefix}setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               f'`{prefix}reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               f'`{prefix}close` - Closes the current thread and deletes the channel.\n' \
-               f'`{prefix}disable` - Closes all threads and disables modmail for the server.\n' \
-               f'`{prefix}customstatus` - Sets the Bot status to whatever you want.' \
-               f'`{prefix}block` - Blocks a user from using modmail!' \
-               f'`{prefix}unblock` - Unblocks a user from using modmail!'
-
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
+        cmds = f'`{prefix}setup [modrole] <- (optional)` - Esse comando eu vou te meter o cacete.\n' \
+               f'`{prefix}reply <message...>` - Esse comando eu vou respoonder com um tapa.\n' \
+               f'`{prefix}close` - Com esse comado eu como alguém.\n' \
+               f'`{prefix}disable` - Com esse comando eu bebo pinga 10/10.\n' \
+               f'`{prefix}customstatus` - Com esse comando eu vou vomitar na sua cara.' \
+               f'`{prefix}block` - Vou meter chifre no gabriel' \
+               f'`{prefix}unblock` - Eu mando o Will tomar no cú.'/
+        warn = 'Eu tenho 18 anos de vida. ' \
+               'Vou meter o cacete'
         em.add_field(name='Commands', value=cmds)
         em.add_field(name='Warning', value=warn)
         em.add_field(name='Github', value='https://github.com/verixx/modmail')
@@ -340,7 +339,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('🏷️')
         except:
             pass
 
@@ -356,8 +355,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Obrigado pela mensagem!')
+        em.description = 'Espectador: Responderei quando for possível!'
         em.color = discord.Color.green()
 
         if channel is not None:
@@ -414,9 +413,9 @@ class Modmail(commands.Bot):
 
         if id not in top_chan.topic:  
             await top_chan.edit(topic=topic)
-            await ctx.send('User successfully blocked!')
+            await ctx.send('blockeado sucesso!')
         else:
-            await ctx.send('User is already blocked.')
+            await ctx.send('desbloqueado sucesso.')
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
