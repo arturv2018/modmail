@@ -204,7 +204,7 @@ class Modmail(commands.Bot):
                     if 'User ID:' in str(chan.topic):
                         user_id = int(chan.topic.split(': ')[1])
                         user = self.get_user(user_id)
-                        await user.send(f'**{ctx.author}** has closed this modmail session.')
+                        await user.send(f'**{ctx.author}** .')
                     await chan.delete()
         await categ.delete()
         await ctx.send('Disabled modmail.')
@@ -356,8 +356,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Ticket Enviado')
-        em.description = 'Sua mensagem foi recebida, respondederemos assim que possível!'
+        em = discord.Embed(title='sua mensagem foi enviada!')
+        em.description = 'Espectador irá responder!'
         em.color = discord.Color.green()
 
         if channel is not None:
